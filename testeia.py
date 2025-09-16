@@ -6,28 +6,25 @@ import copy
 # ==============================================================================
 # Documentação:
 # Aqui definimos os dados do jogo que nosso algoritmo usará.
-# - 'LUCIA_LV18': Status base do Lucian no nível 18.
-# - 'TARGET_DUMMY': O alvo que o Lucian vai atacar.
-# - 'ITEMS': Um dicionário com os itens disponíveis e seus atributos.
 #   - 'ad': Dano de Ataque
 #   - 'as_bonus_percent': Bônus de Velocidade de Ataque em porcentagem
 #   - 'crit_chance': Chance de Acerto Crítico em porcentagem (0 a 100)
 #   - 'cost': Custo do item (não usado no cálculo, mas bom para referência)
 
-LUCIA_LV18 = {
+LUCIA_LV18 = { #- 'LUCIA_LV18': Status base do Lucian no nível 18
     'base_ad': 113,
-    'base_as': 0.638,  # Velocidade de Ataque base na qual os bônus se aplicam
-    'as_ratio': 0.638, # Ratio para cálculo de AS
-    'crit_damage_multiplier': 1.75 # Dano crítico padrão (175%)
+    'base_as': 0.638,  
+    'as_ratio': 0.638, 
+    'crit_damage_multiplier': 1.75
 }
 
-TARGET_DUMMY = {
+TARGET_DUMMY = { #'TARGET_DUMMY': O alvo que o Lucian vai atacar.
     'health': 3000,
     'armor': 100
 }
 
-# Lista simplificada de itens de ADC
-ITEMS = {
+
+ITEMS = { #'ITEMS': Um dicionário com os itens disponíveis e seus atributos.
     "Adagas Navori": {'ad': 65, 'crit_chance': 20, 'haste': 15},
     "Gume do Infinito": {'ad': 70, 'crit_chance': 20},
     "Mata-Cráquens": {'ad': 50, 'as_bonus_percent': 35, 'crit_chance': 20},
