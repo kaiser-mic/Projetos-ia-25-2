@@ -8,7 +8,7 @@ import os
 
 
 
-os.environ["GOOGLE_API"] = "AIzaSyB-SH8V5QQ0QCtNXsP1QRJ87ztA2vp2J04"
+os.environ["GOOGLE_API"] = 
 
 
 
