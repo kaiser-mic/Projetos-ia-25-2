@@ -1,6 +1,7 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 from crewai import Agent, Task, Crew, Process, LLM
+from api_key import *
 
 
 
@@ -8,7 +9,7 @@ import os
 
 
 
-os.environ["GOOGLE_API"] = "AIzaSyB-SH8V5QQ0QCtNXsP1QRJ87ztA2vp2J04"
+os.environ["GOOGLE_API"] = api_key
 
 
 
