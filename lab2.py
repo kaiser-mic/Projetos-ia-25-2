@@ -18,7 +18,7 @@ llm = LLM(model='gemini/gemini-2.0-flash-lite', verbose=True,
           temperature=0.4, api_key=os.environ["GOOGLE_API"])
 
 
-
+#agentes que vao cumprir os papeis que serao necessarios nas tarefas abaixo
 vitima = Agent(
 
     role="vitima",
@@ -66,7 +66,7 @@ escrivao = Agent(
 )
 
 
-
+#tasks que usarao os agentes para cumprir seus objetivos
 tarefa_denuncia = Task(
 
     description="denunciar um homicidio sofrido pelo tio.",
@@ -102,7 +102,7 @@ tarefa_escrivao = Task(
 )
 
 
-
+#instancia do sistema multiagente utilizando crewAI
 crew = Crew(
 
     agents=[vitima, policial, escrivao],
@@ -114,7 +114,7 @@ crew = Crew(
     verbose=True
 
 )
-
+#lancamento do sistema multiagente
 resultado = crew.kickoff()
 
 print(resultado)
