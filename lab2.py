@@ -19,29 +19,13 @@ llm = LLM(model='gemini/gemini-2.0-flash-lite', verbose=True,
 
 
 
-pesquisador = Agent(
+vitima = Agent(
 
-    role="Pesquisador Acadêmico",
+    role="vitima",
 
-    goal="Investigar e reunir informações relevantes sobre um tópico específico.",
+    goal="Denunciar um crime sofrido por ela ou outra pessoa.",
 
-    backstory="Especialista em pesquisa acadêmica com vasta experiência em inovação tecnológica.",
-
-    verbose=True,
-
-    llm=llm
-
-)
-
-
-
-escritor = Agent(
-
-    role="Redator Técnico",
-
-    goal="Escrever um texto claro e coerente com base na pesquisa realizada.",
-
-    backstory="Profissional da área de comunicação com foco em TI.",
+    backstory="Especializada em comunicao com boa oratoria.",
 
     verbose=True,
 
@@ -51,13 +35,13 @@ escritor = Agent(
 
 
 
-revisor = Agent(
+policial = Agent(
 
-    role="Revisor de textos",
+    role="Policial",
 
-    goal="Corrigir e melhorar o relatório escrito com base na pesquisa realizada, garantindo clareza, coerência e correção gramatical.",
+    goal="Escrever um texto claro e coerente com base na denuncia realizada.",
 
-    backstory="Especialista em revisão de textos com atenção aos detalhes e forte domínio da língua portuguesa.",
+    backstory="Profissional da área de comunicação com foco em crimes.",
 
     verbose=True,
 
@@ -67,13 +51,29 @@ revisor = Agent(
 
 
 
-tarefa_pesquisa = Task(
+escrivao = Agent(
 
-    description="Pesquisar sobre o impacto da inteligência artificial na educação brasileira.",
+    role="escrivao da policia",
 
-    expected_output="Um resumo com pelo menos 3 impactos relevantes escrito em português.",
+    goal="formalizar a denuncia e melhorar o relatório escrito com base na denuncia realizada, garantindo clareza, coerência e correção gramatical.",
 
-    agent=pesquisador
+    backstory="Especialista em revisão de textos e especialista em crimes com atenção aos detalhes e forte domínio da língua portuguesa.",
+
+    verbose=True,
+
+    llm=llm
+
+)
+
+
+
+tarefa_denuncia = Task(
+
+    description="denunciar um homicidio sofrido pelo tio.",
+
+    expected_output="UDescricao do que aconteceu com a vitima.",
+
+    agent=vitima
 
 )
 
@@ -81,23 +81,23 @@ tarefa_pesquisa = Task(
 
 tarefa_redacao = Task(
 
-    description="Com base na pesquisa realizada, rescreva um artigo sobre o tema.",
+    description="Com base na denuncia realizada, escreva um resumo sobre o tema.",
 
-    expected_output="Artigo técnico com introdução, desenvolvimento e conclusão em português.",
+    expected_output="resumo da denuncia indicando todos fatos ocorridos e informacoes necessarias em português.",
 
-    agent=escritor
+    agent=policial
 
 )
 
 
 
-tarefa_revisao = Task(
+tarefa_escrivao = Task(
 
-    description="Revisar o artigo técnico escrito, corrigindo erros gramaticais e implementar melhorias",
+    description="formalizar o resumo da denuncia escrito, corrigindo erros gramaticais e implementar melhorias",
 
-    expected_output="Artigo revisado coeso e bem estruturado em português.",
+    expected_output="denuncia formalizada, coeso e bem estruturado em português.",
 
-    agent=revisor
+    agent=escrivao
 
 )
 
@@ -105,9 +105,9 @@ tarefa_revisao = Task(
 
 crew = Crew(
 
-    agents=[pesquisador, escritor, revisor],
+    agents=[vitima, policial, escrivao],
 
-    tasks=[tarefa_pesquisa, tarefa_redacao, tarefa_revisao],
+    tasks=[tarefa_denuncia, tarefa_redacao, tarefa_escrivao],
 
     process=Process.sequential,
 
