@@ -1,1 +1,7 @@
-api_key.py
+# Ignorar pastas de ambientes virtuais Python
+env_gestos/
+env_visao_nova/
+
+# Ignorar outras pastas comuns de Python
+__pycache__/
+*.pyc
