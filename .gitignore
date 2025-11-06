@@ -5,3 +5,4 @@ env_visao_nova/
 # Ignorar outras pastas comuns de Python
 __pycache__/
 *.pyc
+api_key.py
